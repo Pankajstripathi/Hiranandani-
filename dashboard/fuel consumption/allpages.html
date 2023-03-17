@@ -141,17 +141,46 @@
 
 
         <hr />
-        <div class="container-fluid  row chart-container rounded-3">
+        <div class=" row justify-content-center pb-3 bg-white mx-auto ">
+            <div class="col-10">
+              <div class="chartBox rounded-3">
+                <h1 style="
+                      font-size: 20px;
+                      text-align: center;
+                      margin-bottom: 5px;
+                      color: grey;
+                    ">
+                  Fuel Consumption - Cost and Energy Generated Data
+                </h1>
+                <canvas class="rounded-3" id="myChart"></canvas>
+              </div>
+          </div>
+          </div>
+          <div class="row justify-content-center bg-white rounded-3 my-3 mx-auto">
+            <div class="col-sm-10 ">
+                <h1 class="text-center" style="font-size: 24px; color: grey;">Energy Produced vs Diesel Consumed</h1>
+                <canvas id="line"></canvas>
+            </div>
+        </div>
+        <div class="container-fluid  row chart-container rounded-3 pb-5">
             <div>
                 <h4 class="text-center" style="color: grey;">Generator Maintainance</h4>
             </div>
             <canvas id="chart">
             </canvas>
         </div>
-
+        <div class="row justify-content-center bg-white rounded-3 my-3 mx-auto py-2">
+            <div class="col-sm-3 ">
+        
+              <h1 class="text-center" style="font-size: 24px; color: grey;">Energy Produced vs Diesel Consumed</h1>
+              <canvas id="doughnut"></canvas>
+            </div>
+          </div>
+          
+        
     </div>
     <script>
-        const data = {
+        const data2 = {
             labels: ['Maintenance Done', 'Maintenance Not Done'],
             datasets: [{
                 type: 'bar',
@@ -195,9 +224,163 @@
 
         const chart = new Chart(document.getElementById('chart'), {
             type: 'bar',
-            data: data,
+            data: data2,
             options: options
         });
+
+        /////////// doughnut
+        
+    // doughnut graph
+
+    const ctd = document.getElementById('doughnut');
+
+new Chart(ctd, {
+  type: 'doughnut',
+  data: {
+    labels: [
+      'Operational Generators',
+      'Non-Operational Generators',
+
+    ],
+    datasets: [{
+      // cutout: 70,
+      // radius: 40,
+      label: 'Maintains',
+      data: [256, 100],
+      borderWidth: 1
+
+    }]
+  },
+  options: {
+    // scales: {
+    //     y: {
+    //         beginAtZero: true
+    //     }
+    // }
+  },
+  title: {
+    display: true,
+    text: "Maintains",
+    fontSize: 25,
+  }
+});
+//////// line graph
+
+const ctl = document.getElementById('line');
+
+new Chart(ctl, {
+    type: 'line',
+    data: {
+
+        datasets: [{
+            type: 'line',
+            label: 'data1',
+            data: [8, -10, 8, 10, 8, -1, 11 ],
+        },
+        {
+            type: 'line',
+            label: 'data2',
+            data: [0, 4, 5, 6, 2, 6, 8],
+        }],
+        labels: ['21/02/23', '22/02/23', '23/02/23', '24/02/23', '25/02/23', '26/02/23', '27/02/23'],
+    },
+
+});
+////////
+    // setup
+   
+    const data = {
+            labels: [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+            ],
+            datasets: [
+              {
+                label: "Fuel Consumption",
+                data: [
+                  18, 12, 6, 9, 12, 3, 9, 10, 70, 90, 50, 40, 15, 18, 12, 6,
+                  9, 12, 3, 9, 10, 100, 90, 50, 40,
+                ],
+                backgroundColor: ["rgba(0, 0, 255, 1)"],
+                borderColor: ["rgba(0, 0, 255, 1)"],
+                borderWidth: 1,
+              },
+              {
+                label: "Cost",
+                data: [
+                  8, 2, 16, 19, 12, 13, 19, 10, 100, 90, 50, 40, 15, 18, 12,
+                  60, 9, 12, 3, 9, 10, 80, 60, 30, 70,
+                ],
+                backgroundColor: ["rgba(255, 165, 0, 1)"],
+                borderColor: ["rgba(255, 165, 0, 1)"],
+                borderWidth: 1,
+              },
+              {
+                label: "Energy",
+                data: [
+                  18, 12, 16, 9, 12, 3, 19, 10, 80, 90, 50, 4, 15, 18, 12, 16,
+                  9, 12, 13, 9, 10, 10, 10, 40, 20,
+                ],
+                backgroundColor: ["rgba(128, 128, 128, 1)"],
+                borderColor: ["rgba(128, 128, 128, 1)"],
+                borderWidth: 1,
+              },
+            ],
+          };
+          //    config
+          const config = {
+            type: "bar",
+            data,
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  title: {
+                    display: true,
+                    text: "UNITS",
+                  },
+                },
+                x: {
+                  title: {
+                    display: true,
+                    text: "Generators",
+                  },
+                  grid: {
+                    display: false,
+                  },
+                },
+              },
+            },
+          };
+
+          // render init block
+          const myChart = new Chart(
+            document.getElementById("myChart"),
+            config
+          );
     </script>
 
 </body>
