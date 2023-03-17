@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fuel consumption</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: whitesmoke;
+        }
+
+        .form-check .form-check-input {
+            float: inherit;
+            margin-left: -1.5em;
+        }
+        .chart-container {
+            height: 500px;
+            display: flex;
+                justify-content: center;
+                background: white;
+        }
+
+        @media only screen and (min-width:321px) and (max-width:568px) {
+            .s-label {
+                text-align: justify !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid mx-auto">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center my-2">
+                    Fuel Consumption - Cost and Energy Generated Data
+                </h1>
+            </div>
+            <hr />
+        </div>
+        
+        <div class="container-fluid bg-white rounded-3">
+            <div class="row justify-content-between align-items-center text-center text-sm-start">
+              <div class="col-sm-4 col-md-3 pt-2 col-lg-2">
+                <div class="form-check " style="text-align: justify;">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="border: 1px solid gray;">
+                  <label class="form-check-label fw-semibold" for="flexCheckDefault">
+                    Date
+                  </label>
+                </div>
+                <form class="" action="/action_page.php" style="text-align: justify;">
+                  <label class="From" for="datemin">From:</label>
+                  <br />
+                  <input class="input rounded" type="date" id="datemin" name="datemin" min="2000-01-01"  style="padding: 6px; background: whitesmoke; border: none;"> </input>
+                  <br />
+          
+                  <label class="From" for="datemax">To:</label>
+                  <br />
+                  <input class="input rounded-3" type="date" id="datemax" name="datemax" style="padding: 6px; background: whitesmoke; border: none;"> </input><br /><br />
+                </form>
+              </div>
+              <div class="col-sm-4 col-md-3 col-lg-1">
+                <div class="form-check" style="text-align: justify;">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="border: 1px solid gray;">
+                  <label class="form-check-label fw-semibold " for="flexCheckDefault">
+                    Location
+                  </label>
+                </div>
+                <div class="dropdown py-2 s-label">
+          
+                  <select class="rounded" name="cars" id="cars" style="padding: 6px; width: 145px;background: whitesmoke; border: none;">
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Lucknow">Lucknow</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4 col-md-3 col-lg-2" style="text-align: end;"  >
+                <div class="form-check" style="margin-right:44px;">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="border: 1px solid gray;">
+                  <label class="form-check-label fw-semibold " for="flexCheckDefault">
+                    Generator
+                  </label>
+                </div>
+                <div class="dropdown py-2 s-label">
+                  <select class="rounded" name="cars" id="cars" style="padding: 6px; width: 145px;background: whitesmoke; border: none;">
+                    <option value="">Gem 1 - Gen 25</option>
+                    <option value="">Generator 1</option>
+                    <option value="">Generator 2</option>
+                    <option value="">Generator 3</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+        <hr />
+        <div class="container-fluid  row chart-container rounded-3">
+            <div>
+                <h4 class="text-center" >Generator Maintainance</h4>
+            </div>
+            <canvas id="chart">
+            </canvas>
+        </div>
+
+
+    </div>
+</div> 
+    <script>
+        const data = {
+            labels: ['Maintenance Done', 'Maintenance Not Done'],
+            datasets: [{
+                type: 'bar',
+                label: 'Generator Maintenance',
+                backgroundColor: '#0062a9',
+                data: [-10],
+            }, {
+                type: 'bar',
+                // label: 'Negative Values',
+                backgroundColor: '#0062a9',
+                data: [0, 25,]
+            }]
+        };
+        const options = {
+            responsive: true,
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Waterfall Chart'
+            },
+            scales: {
+                xAxes: [{
+                    stacked: true,
+                    barPercentage: 2,
+                    categoryPercentage: 2
+                }],
+                yAxes: [{
+                    stacked: true,
+                    ticks: {
+                        min: 0,
+                        max: 100,
+                        callback: function (value, index, values) {
+                            return '$' + value;
+                        }
+                    }
+                }]
+            }
+        };
+
+        const chart = new Chart(document.getElementById('chart'), {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+    </script>
+
+</body>
+
+</html>

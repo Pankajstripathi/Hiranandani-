@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,83 +10,166 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body{
-            background-color: lightgrey;
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: whitesmoke;
         }
-        .row{
-            margin-top: 10px;
-            border-radius: 7px;
+
+        .form-check .form-check-input {
+            float: inherit;
+            margin-left: -1.5em;
         }
-        .col-sm-4{
-            justify-content: center;
+
+        @media only screen and (min-width:321px) and (max-width:568px) {
+            .s-label {
+                text-align: justify !important;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="container-fluid">
-        <div class="row bg-white mx-auto">
-            <div class="col-sm-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Date
-                    </label>
-                </div>
-                <div>
-                    <form class="py-2" action="/action_page.php">
+    <nav class="navbar navbar-expand-md navbar-white"
+        style="background-color: white; border-bottom: 1px solid rgb(219, 216, 216);">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Navbar brand -->
+            <a class="navbar-brand text-dark" style="font-weight: 500; font-size: 25px;" href="#">Brand</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse d-md-flex flex-md-row me-2 justify-content-end"
+                id="navbarSupportedContent">
+                <!-- Icons -->
+                <ul class="navbar-nav ">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-dark" style="font-weight: 500; font-size: 18px;"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
+                                class="bi bi-person-fill"></i>
+                            Profile</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">My Account</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" style="font-weight: 500; font-size: 18px;"
+                            href="signin.html"></i>Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <div class="container-fluid mx-auto">
+    <div class="container-fluid pt-3">
+        <div class="container-fluid bg-white rounded-3">
+            <div class="row justify-content-between align-items-center text-center text-sm-start">
+                <div class="col-sm-4 col-md-3 pt-2 col-lg-2">
+                    <div class="form-check " style="text-align: justify;">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                            style="border: 1px solid gray;">
+                        <label class="form-check-label fw-semibold" for="flexCheckDefault">
+                            Date
+                        </label>
+                    </div>
+                    <form class="" action="/action_page.php" style="text-align: justify;">
                         <label class="From" for="datemin">From:</label>
-                        <br>
-                        <input class="input" type="date" id="datemin" name="datemin" min="2000-01-01">
-                        <br>
-                      
+                        <br />
+                        <input class="input rounded" type="date" id="datemin" name="datemin" min="2000-01-01"
+                            style="padding: 6px; background: whitesmoke; border: none;"> </input>
+                        <br />
+
                         <label class="From" for="datemax">To:</label>
-                        <br>
-                        <input class="input" type="date" id="datemax" name="datemax"><br><br>
-                        
+                        <br />
+                        <input class="input rounded-3" type="date" id="datemax" name="datemax"
+                            style="padding: 6px; background: whitesmoke; border: none;"> </input><br /><br />
                     </form>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Location
-                    </label>
+                <div class="col-sm-4 col-md-3 col-lg-1">
+                    <div class="form-check" style="text-align: justify;">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                            style="border: 1px solid gray;">
+                        <label class="form-check-label fw-semibold " for="flexCheckDefault">
+                            Location
+                        </label>
+                    </div>
+                    <div class="dropdown py-2 s-label">
+
+                        <select class="rounded" name="cars" id="cars"
+                            style="padding: 6px; width: 145px;background: whitesmoke; border: none;">
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Lucknow">Lucknow</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="dropdown py-2 From">
-                    <button class="btn btn-secondary bg-white text-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Location
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="#">Mumbai</a></li>
-                      <li><a class="dropdown-item" href="#">Thane</a></li>
-                      <li><a class="dropdown-item" href="#">Panvel</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Generator
-                    </label>
-                </div>
-                <div class="dropdown py-2 From">
-                    <button class="btn btn-secondary bg-white text-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Gen 1 - Gen 25
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="#">Generator 1</a></li>
-                      <li><a class="dropdown-item" href="#">Generator 2</a></li>
-                      <li><a class="dropdown-item" href="#">Generator 3</a></li>
-                    </ul>
+                <div class="col-sm-4 col-md-3 col-lg-2" style="text-align: end;">
+                    <div class="form-check" style="margin-right:44px;">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                            style="border: 1px solid gray;">
+                        <label class="form-check-label fw-semibold " for="flexCheckDefault">
+                            Generator
+                        </label>
+                    </div>
+                    <div class="dropdown py-2 s-label">
+                        <select class="rounded" name="cars" id="cars"
+                            style="padding: 6px; width: 145px;background: whitesmoke; border: none;">
+                            <option value="">Gem 1 - Gen 25</option>
+                            <option value="">Generator 1</option>
+                            <option value="">Generator 2</option>
+                            <option value="">Generator 3</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
-        
+
+
     </div>
+        <hr />
+
+
+    <div class="row justify-content-center bg-white rounded-3 my-3 mx-auto">
+        <div class="col-sm-10 ">
+            <h1 class="text-center" style="font-size: 24px; color: grey;">Energy Produced vs Diesel Consumed</h1>
+            <canvas id="line"></canvas>
+        </div>
+    </div>
+</div>
+    <script>
+
+        const ctl = document.getElementById('line');
+
+        new Chart(ctl, {
+            type: 'line',
+            data: {
+
+                datasets: [{
+                    type: 'line',
+                    label: 'data1',
+                    data: [8, 10, 8, 10, 8, 10, 12],
+                },
+                {
+                    type: 'line',
+                    label: 'data2',
+                    data: [0, 4, 2, 4, 2, 6, 8],
+                }],
+                labels: ['21/02/23', '22/02/23', '23/02/23', '24/02/23', '25/02/23', '26/02/23', '27/02/23'],
+            },
+
+        });
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
